@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
 import { useLogin } from "../services/mutation.js";
-import { setCookie } from "../utils/cookie.js";
+import {getCookie, setCookie} from "../utils/cookie.js";
 import logo from "../images/logo.png";
 
 const Login = () => {
@@ -13,6 +13,8 @@ const Login = () => {
         userName: "",
         password: "",
     })
+
+    const token = getCookie("token")
 
     const navigate = useNavigate();
     const { mutate } = useLogin();
@@ -42,12 +44,22 @@ const Login = () => {
         }
         resetForm()
 
-        mutate(form,
-            {onSuccess: (data) => {
-                    console.log(data.data);
-                    setCookie("token", data.data?.token);
-                    navigate("/")},
-                onError: (error) => console.log(error.response.data.message)})
+        // mutate(form, {
+        //     onSuccess: (data) => {
+        //             console.log(data.data);
+        //             setCookie("token", data.data?.token);
+        //         navigate("/");
+        //     },
+        //     onError: (error) => console.log(error.response.data.message)})
+
+        mutate(form, {
+            onSuccess: (data) => {
+                console.log(data);
+                setCookie("token", data?.token);
+                navigate("/");
+            },
+            onError: (error) => console.log(error.response.data.message),
+        });
     };
 
     const resetForm = () => {

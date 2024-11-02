@@ -1,23 +1,20 @@
-import { useDeleteProduct } from "../services/mutation.js";
-import { Link } from "react-router-dom";
 //Icons
 import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
+import {useState} from "react";
+import DeleteModals from "./DeleteModals.jsx";
+import EditModals from "./EditModals.jsx";
 
-const ProductsCard = ({product , data }) => {
-    const { mutate } = useDeleteProduct();
+const ProductsCard = ({ product }) => {
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [editModal, setEditModal] = useState(false);
 
-    const deleteHandler = (id) => {
-        const data = {ids: [id]};
+    const deleteModalHandler = () => {
+        setDeleteModal(true);
+    }
 
-        mutate({data} , {
-            onSuccess: (data) => {
-                console.log(data)
-            },
-            onError: (error) => {
-                console.log(error)
-            }
-        })
+    const editModalHandler = () => {
+        setEditModal(true);
     }
 
     return(
@@ -29,17 +26,18 @@ const ProductsCard = ({product , data }) => {
                 <p className="w-[150px] text-[13px] font-normal text-[#282828]">{product?.id}</p>
             </div>
             <div className="flex items-center w-[60px] mr-20">
-                <button onClick={() => deleteHandler(product?.id)}>
-                    <Link to="/editModals">
-                        <FiEdit className="size-[20px] text-[#4ade80]"/>
-                    </Link>
+                {/*<button onClick={() => deleteHandler(product?.id)}>*/}
+                {/*    <FiEdit className="size-[20px] text-[#4ade80]"/>*/}
+                {/*</button>*/}
+                <button onClick={editModalHandler}>
+                    <FiEdit className="size-[20px] text-[#4ade80]"/>
                 </button>
-                <button>
-                    <Link to="/deleteModals">
-                        <GoTrash className="mx-5 size-[20px] text-[#f43f5e]"/>
-                    </Link>
+                <button onClick={deleteModalHandler}>
+                    <GoTrash className="mx-5 size-[20px] text-[#f43f5e]"/>
                 </button>
             </div>
+            {!!deleteModal && <DeleteModals setDeleteModal={setDeleteModal}/>}
+            {!!editModal && <EditModals setEditModal={setEditModal}/>}
         </div>
     )
 }

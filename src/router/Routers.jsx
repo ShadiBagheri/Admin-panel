@@ -1,16 +1,14 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 //Pages
 import Login from "../pages/Login.jsx";
 import NotFound from "../pages/NotFound.jsx";
 import Register from "../pages/Register.jsx";
-import { getCookie } from "../utils/cookie.js";
 import AuthProvider from "../providers/AuthProvider.jsx";
 import ProductsPanel from "../pages/ProductsPanel.jsx";
 
 const Routers = () => {
-    const token = getCookie("token");
-    console.log(token)
-
+    // const token = getCookie("token");
+    // console.log(token);
     return(
         <BrowserRouter>
             <Routes>
@@ -18,7 +16,7 @@ const Routers = () => {
                     <AuthProvider>
                         <ProductsPanel/>
                     </AuthProvider>
-                } />
+                }/>
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="*" element={<NotFound />}/>

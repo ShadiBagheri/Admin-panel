@@ -7,8 +7,7 @@ function App() {
       <TanStackQueryProvider>
           <Routers/>
       </TanStackQueryProvider>
-
-)
+  )
 }
 
 export default App

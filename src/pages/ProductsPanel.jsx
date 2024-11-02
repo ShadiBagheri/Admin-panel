@@ -9,18 +9,22 @@ import setting from "../images/setting-3.png";
 
 const ProductsPanel = () => {
     const [page, setPage] = useState(1);
-    const { data, isPending, error } = useAllProducts(page);
+    const { data, error, isPending } = useAllProducts(page);
     const [showModal, setShowModal] = useState(false);
 
-    const addModalHandler = () => {
-        setShowModal(true)
+    if (isPending) return <p>Loading...</p>;
+
+    if (error) {
+        console.log(error)
+        return <p>Somethings went wrong</p>
     }
 
-    if (isPending) return <p>Loading...</p>;
-    if (error) return <p>Somethings went wrong</p>
+    const addModalHandler = () => {
+        setShowModal(true);
+    }
 
     return(
-        <div className="mx-auto">
+        <div className="flex flex-col">
             <header className="flex items-center justify-between w-[1140px] h-[68px] mt-[28px] mx-auto px-5 bg-[#ffffff] border-[1px] border-[#e4e4e4] rounded-[16px]">
                 <div className="flex mx-2">
                     <CiSearch className="w-[24px] h-[24px]" />
@@ -61,7 +65,7 @@ const ProductsPanel = () => {
                 ))}
             </ul>
             <button onClick={() => setPage(2)} className="mx-auto">2</button>
-            {!!showModal && <AddProductsForm/>}
+            {!!showModal && <AddProductsForm setShowModal={setShowModal}/>}
         </div>
     )
 }

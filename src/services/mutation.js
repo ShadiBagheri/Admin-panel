@@ -1,5 +1,4 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
 import api from "../configs/api";
 
 const useRegister = () => {
@@ -38,4 +37,17 @@ const useDeleteProduct = () => {
   return useMutation({ mutationFn, onSuccess });
 };
 
-export { useRegister, useLogin, useCreateProducts, useDeleteProduct };
+const useEditProduct = () => {
+  const queryClient = useQueryClient();
+
+  const mutationFn = (data) => api.put("products", data);
+
+  const onSuccess = async () => {
+    await queryClient.invalidateQueries({ queryKey: ["all-products"] });
+  };
+
+  return useMutation({ mutationFn, onSuccess });
+};
+
+
+export { useRegister, useLogin, useCreateProducts, useDeleteProduct, useEditProduct };

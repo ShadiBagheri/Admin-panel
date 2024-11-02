@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-//Image
-import logo from "../images/logo.png";
 //CustomHooks
 import { useRegister } from "../services/mutation.js";
+//Image
+import logo from "../images/logo.png";
+
 
 const Register = () => {
     const [form, setForm] = useState({
@@ -46,13 +46,21 @@ const Register = () => {
             return;
         }
 
+        resetForm()
+        console.log(form)
+
+        // navigate("/login");
+
         mutate(
-            {userName, password, confirmPassword},
-            {onSuccess: (data) => {
-                    console.log(data.data.message);
-                    resetForm();
-                    navigate("/login")},
-                onError: (error) => console.log(error.response.data.message)})
+            { userName, password },
+            {
+                onSuccess: (data) => {
+                    console.log(data);
+                    navigate("/login");
+                },
+                onError: (error) => console.log(error.response.data.message),
+            }
+        );
     };
 
     const resetForm = () => {
