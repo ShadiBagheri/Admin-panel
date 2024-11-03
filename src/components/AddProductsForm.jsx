@@ -45,14 +45,14 @@ const AddProductsForm = ({ setShowModal }) => {
     }
 
     return(
-        <div className="w-[100%] h-[100vh] py-96 backdrop-blur-sm bg-black/30 z-10 absolute">
-            <div className="mt-[-300px] mx-auto">
+        <div className="flex items-center w-[100%] h-[100%] backdrop-blur-sm bg-black/30 z-10 absolute overflow-hidden">
+            <div className="w-[460px] h-[448px] items-center mx-auto mt-[-350px] p-10 bg-[#ffff] rounded-[30px] overflow-hidden">
                 {data?.status === 201 &&
                     <Alert className="w-[200px] h-[70px] mt-[50px] mx-auto p-2 text-center"
                            icon={<CiCircleCheck className="mx-2"/>} severity="success">
                         محصول جدید اضافه شد
                     </Alert>}
-                <h1 className="mt-2 text-[20px] font-medium text-[#282828]">ایجاد محصول جدید</h1>
+                <h1 className="mt-2 text-[20px] text-center font-medium text-[#282828]">ایجاد محصول جدید</h1>
                 <form onSubmit={addHandler} className="flex flex-col items-end my-5 mx-auto gap-3">
                     <div className="flex flex-col">
                         <label className="text-[14px] font-medium text-[#282828]">نام کالا</label>

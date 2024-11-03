@@ -3,36 +3,38 @@ import { useDeleteProduct } from "../services/mutation.js";
 import close from "../images/Close.png";
 
 
-const DeleteModals = ({ setDeleteModal }) => {
+const DeleteModals = ({ setDeleteModal, productId }) => {
     const { mutate } = useDeleteProduct();
 
     const deleteHandler = () => {
-        const data = [id];
-
-        mutate(data  , {
-            onSuccess: (data) => {
-                console.log(data)
-            },
-            onError: (error) => {
-                console.log(error)
-            }
-        })
+        if (productId){
+            mutate(productId  , {
+                onSuccess: (data) => {
+                    console.log(data)
+                    setDeleteModal(false)
+                },
+                onError: (error) => {
+                    console.log(error)
+                }
+            })
+        }
     }
 
     const deleteCancelHandler = () => {
         setDeleteModal(false);
     }
 
-
     return(
-        <div className="flex flex-col items-center w-[472px] h-[338px] mx-auto my-28 py-5 px-10 bg-[#ffff] rounded-[30px] absolute">
-            <div className="flex flex-col items-center mt-5">
-                <img className="w-[96px] h-[97.83px]" src={close} alt="close"/>
-                <h1 className="mt-16 text-[20px] font-normal text-[#282828]">آیا از حذف این محصول مطمئنید؟</h1>
-            </div>
-            <div className="flex mx-auto justify-between mt-8">
-                <button onClick={deleteHandler} className="w-[160px] h-[41px] ml-2 p-[10px] text-[#fff] text-center text-[16px] font-semibold bg-[#f43f5f] rounded-[10px]">حذف</button>
-                <button onClick={deleteCancelHandler} className="w-[160px] h-[41px] mr-2 p-[10px] text-[#282828] text-center text-[16px] font-semibold bg-[#dfdfdf] rounded-[10px]">لغو</button>
+        <div className="flex items-center w-[100%] h-[100%] m-[100px] backdrop-blur-sm bg-black/30 z-10 absolute overflow-hidden">
+            <div className="w-[460px] h-[448px] items-center mx-auto mt-[-50px] p-10 bg-[#ffff] rounded-[30px]">
+                <div className="flex flex-col items-center mt-5">
+                    <img className="w-[96px] h-[97.83px]" src={close} alt="close"/>
+                    <h1 className="mt-16 text-[20px] font-normal text-[#282828]">آیا از حذف این محصول مطمئنید؟</h1>
+                </div>
+                <div className="flex mx-auto justify-between mt-16">
+                    <button onClick={deleteHandler} className="w-[160px] h-[41px] ml-2 p-[10px] text-[#fff] text-center text-[16px] font-semibold bg-[#f43f5f] rounded-[10px]">حذف</button>
+                    <button onClick={deleteCancelHandler} className="w-[160px] h-[41px] mr-2 p-[10px] text-[#282828] text-center text-[16px] font-semibold bg-[#dfdfdf] rounded-[10px]">لغو</button>
+                </div>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import api from "../configs/api";
+import {data} from "autoprefixer";
 
 const useRegister = () => {
   const mutationFn = (data) => api.post("auth/register", data);
@@ -28,7 +29,7 @@ const useCreateProducts = () => {
 const useDeleteProduct = () => {
   const queryClient = useQueryClient();
 
-  const mutationFn = (data) => api.delete("products", data);
+  const mutationFn = (id) => api.delete(`products/${id}`);
 
   const onSuccess = async () => {
     await queryClient.invalidateQueries({ queryKey: ["all-products"] });
@@ -40,7 +41,7 @@ const useDeleteProduct = () => {
 const useEditProduct = () => {
   const queryClient = useQueryClient();
 
-  const mutationFn = (data) => api.put("products", data);
+  const mutationFn = (id, data) => api.put(`products/${id}`, data);
 
   const onSuccess = async () => {
     await queryClient.invalidateQueries({ queryKey: ["all-products"] });

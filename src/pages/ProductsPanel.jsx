@@ -24,7 +24,7 @@ const ProductsPanel = () => {
     }
 
     return(
-        <div className="flex flex-col">
+        <div className="flex flex-col relative">
             <header className="flex items-center justify-between w-[1140px] h-[68px] mt-[28px] mx-auto px-5 bg-[#ffffff] border-[1px] border-[#e4e4e4] rounded-[16px]">
                 <div className="flex mx-2">
                     <CiSearch className="w-[24px] h-[24px]" />
@@ -59,7 +59,7 @@ const ProductsPanel = () => {
                     </ul>
                 </nav>
             </div>
-            <ul className="w-[1140px] h-[737px] mx-auto mt-[-687px] bg-[#ffff]  rounded-b-[30px]">
+            <ul className="w-[1140px] h-[737px] mx-auto mt-[-687px] bg-[#ffff] rounded-b-[30px]">
                 {data?.data?.map(product => (
                     <ProductsCard key={product.id} product={product}/>
                 ))}

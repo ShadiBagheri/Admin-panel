@@ -45,11 +45,7 @@ const Register = () => {
             setError(validationErrors);
             return;
         }
-
         resetForm()
-        console.log(form)
-
-        // navigate("/login");
 
         mutate(
             { userName, password },
