@@ -11,6 +11,7 @@ const ProductsPanel = () => {
     const [page, setPage] = useState(1);
     const { data, error, isPending } = useAllProducts(page);
     const [showModal, setShowModal] = useState(false);
+    const [search, setSearch] = useState("");
 
     if (isPending) return <p>Loading...</p>;
 
@@ -23,12 +24,25 @@ const ProductsPanel = () => {
         setShowModal(true);
     }
 
+    //this line have problems
+
+    const filterProducts = data.filter(product => {
+        product.name.toLowerCase().includes(search.toLowerCase());
+        product.price.toLowerCase().includes(search.toLowerCase());
+        product.quantity.toLowerCase().includes(search.toLowerCase());
+    })
+
     return(
         <div className="flex flex-col relative">
             <header className="flex items-center justify-between w-[1140px] h-[68px] mt-[28px] mx-auto px-5 bg-[#ffffff] border-[1px] border-[#e4e4e4] rounded-[16px]">
                 <div className="flex mx-2">
                     <CiSearch className="w-[24px] h-[24px]" />
-                    <input className="w-[113px] h-[25px] px-2 text-[16px] font-normal text-right outline-none" type="text" placeholder="جستجو کالا"/>
+                    <input className="w-[113px] h-[25px] px-2 text-[16px] font-normal text-right outline-none"
+                           type="text"
+                           placeholder="جستجو کالا"
+                           value={search}
+                           onChange={(e) => setSearch(e.target.value)}
+                    />
                 </div>
                 <div className="flex w-[150px] h-[52px] mx-2 pr-2 border-s-[2px]">
                     <img className="w-[50px] h-[50px] rounded-full" src={profile} alt="profile"/>
@@ -44,7 +58,8 @@ const ProductsPanel = () => {
                     <img className="w-[30px] h-[30px] mt-2" src={setting} alt="setting"/>
                     <h2 className="mr-2 text-center text-[24px] font-normal text-[#282828]">مدیریت کالا</h2>
                 </div>
-                <button onClick={addModalHandler} className="w-[132px] h-[45px] p-[10px] bg-[#55a3f0] text-center text-[16px] font-normal text-[#ffff] rounded-[10px]">
+                <button onClick={addModalHandler}
+                        className="w-[132px] h-[45px] p-[10px] bg-[#55a3f0] text-center text-[16px] font-normal text-[#ffff] rounded-[10px]">
                     افزودن محصول
                 </button>
             </div>
@@ -61,7 +76,7 @@ const ProductsPanel = () => {
             </div>
             <ul className="w-[1140px] h-[737px] mx-auto mt-[-687px] bg-[#ffff] rounded-b-[30px]">
                 {data?.data?.map(product => (
-                    <ProductsCard key={product.id} product={product}/>
+                    <ProductsCard key={product.id} product={product} productsFilter={filterProducts} setSearch={setSearch}/>
                 ))}
             </ul>
             <button onClick={() => setPage(2)} className="mx-auto">2</button>
