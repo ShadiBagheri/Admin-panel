@@ -65,22 +65,22 @@ const AddProductsForm = ({ setShowModal }) => {
                         />
                     </div>
                     <div className="flex flex-col">
-                        <label className="text-[14px] font-medium text-[#282828]">قیمت</label>
-                        <input className="w-[389px] h-[42px] mt-3 p-[10px] text-[14px] bg-[#f2f2f2] rounded-[8px] outline-none"
-                               type="number"
-                               placeholder="قیمت"
-                               name="price"
-                               value={form.price}
-                               onChange={changeHandler}
-                        />
-                    </div>
-                    <div className="flex flex-col">
                         <label className="text-[14px] font-medium text-[#282828]">تعداد موجودی</label>
                         <input className="w-[389px] h-[42px] mt-3 p-[10px] text-[14px] bg-[#f2f2f2] rounded-[8px] outline-none"
                                type="number"
                                placeholder="تعداد"
                                name="quantity"
                                value={form.quantity}
+                               onChange={changeHandler}
+                        />
+                    </div>
+                    <div className="flex flex-col">
+                        <label className="text-[14px] font-medium text-[#282828]">قیمت</label>
+                        <input className="w-[389px] h-[42px] mt-3 p-[10px] text-[14px] bg-[#f2f2f2] rounded-[8px] outline-none"
+                               type="number"
+                               placeholder="قیمت"
+                               name="price"
+                               value={form.price}
                                onChange={changeHandler}
                         />
                     </div>

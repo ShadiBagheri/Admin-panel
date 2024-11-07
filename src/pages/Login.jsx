@@ -44,14 +44,6 @@ const Login = () => {
         }
         resetForm()
 
-        // mutate(form, {
-        //     onSuccess: (data) => {
-        //             console.log(data.data);
-        //             setCookie("token", data.data?.token);
-        //         navigate("/");
-        //     },
-        //     onError: (error) => console.log(error.response.data.message)})
-
         mutate(form, {
             onSuccess: (data) => {
                 console.log(data);

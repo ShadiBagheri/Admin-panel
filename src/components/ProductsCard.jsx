@@ -7,7 +7,7 @@ import { FiEdit } from "react-icons/fi";
 import { GoTrash } from "react-icons/go";
 
 
-const ProductsCard = ({ product, productsFilter, setSearch }) => {
+const ProductsCard = ({ product }) => {
     const [deleteModal, setDeleteModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [deleteProductId, setDeleteProductId] = useState(null);
@@ -40,7 +40,7 @@ const ProductsCard = ({ product, productsFilter, setSearch }) => {
                 </button>
             </div>
             {!!deleteModal && <DeleteModals setDeleteModal={setDeleteModal} productId={deleteProductId}/>}
-            {!!editModal && <EditModals setEditModal={setEditModal} product={product} />}
+            {!!editModal && <EditModals setEditModal={setEditModal} product={product}/>}
         </div>
     )
 }
