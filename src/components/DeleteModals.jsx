@@ -25,7 +25,7 @@ const DeleteModals = ({ setDeleteModal, productId }) => {
     }
 
     return(
-        <div className="items-center w-[100%] h-[100%] mt-[410px] mr-[-255px] backdrop-blur-sm bg-black/30 z-10 absolute">
+        <div className="container items-center w-[100%] h-[100%] mt-[410px] mr-[-255px] backdrop-blur-sm bg-black/30 z-10 absolute">
             <div className="w-[460px] h-[448px] items-center mx-auto mt-[130px] p-10 bg-[#ffff] rounded-[30px]">
                 <div className="flex flex-col items-center mt-5">
                     <img className="w-[96px] h-[97.83px]" src={close} alt="close"/>

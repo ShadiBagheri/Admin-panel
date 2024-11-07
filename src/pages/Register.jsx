@@ -65,7 +65,7 @@ const Register = () => {
     };
 
     return(
-        <div className="flex flex-col w-460 h-596 items-center mt-[50px] mx-auto bg-[#ffffff] border-[1px] border-[#e4e4e4] rounded-[40px]">
+        <div className="container flex flex-col w-460 h-596 items-center mt-[50px] mx-auto bg-[#ffffff] border-[1px] border-[#e4e4e4] rounded-[40px]">
             <div className="flex flex-col items-center mt-[35px]">
                 <img className="w-[80px] h-[80.47px]" src={logo} alt="logo"/>
                 <h1 className="mt-4 text-2xl font-medium text-[#282828]">فرم ثبت نام</h1>

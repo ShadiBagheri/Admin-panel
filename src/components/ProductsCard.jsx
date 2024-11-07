@@ -24,7 +24,7 @@ const ProductsCard = ({ product }) => {
     }
 
     return(
-        <div className="flex items-center justify-between w-[1140px] h-[70px] mx-auto px-16  border-solid border-[1px] border-[#e4e4e4]">
+        <div className="container flex items-center justify-between w-[1140px] h-[70px] mx-auto px-16  border-solid border-[1px] border-[#e4e4e4]">
             <div className="w-[800px] flex items-center justify-between">
                 <p className="ml-20 text-[13px] font-normal text-[#282828]">{product?.name}</p>
                 <p className="ml-20 text-[13px] font-normal text-[#282828]">{product?.quantity}</p>

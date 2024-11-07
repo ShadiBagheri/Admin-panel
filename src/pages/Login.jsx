@@ -60,7 +60,7 @@ const Login = () => {
     };
 
     return(
-        <div className="flex flex-col w-[470px] h-[523px] items-center mt-[100px] mx-auto bg-[#ffffff] border-[1px] border-[#e4e4e4] rounded-[40px]">
+        <div className="container flex flex-col w-[470px] h-[523px] items-center mt-[100px] mx-auto bg-[#ffffff] border-[1px] border-[#e4e4e4] rounded-[40px]">
             <div className="flex flex-col items-center mt-[40px]">
                 <img className="w-[80px] h-[80.47px]" src={logo} alt="logo"/>
                 <h1 className="mt-4 text-2xl font-medium text-[#282828]">فرم ورود</h1>

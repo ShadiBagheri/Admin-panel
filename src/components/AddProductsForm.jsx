@@ -45,7 +45,7 @@ const AddProductsForm = ({ setShowModal }) => {
     }
 
     return(
-        <div className="flex items-center w-[100%] h-[100%] backdrop-blur-sm bg-black/30 z-10 absolute overflow-hidden">
+        <div className="container flex items-center w-[100%] h-[100%] backdrop-blur-sm bg-black/30 z-10 absolute overflow-hidden">
             <div className="w-[460px] h-[448px] items-center mx-auto mt-[-350px] p-10 bg-[#ffff] rounded-[30px] overflow-hidden">
                 {data?.status === 201 &&
                     <Alert className="w-[200px] h-[70px] mt-[50px] mx-auto p-2 text-center"

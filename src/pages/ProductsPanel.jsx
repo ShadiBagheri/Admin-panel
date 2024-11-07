@@ -44,7 +44,7 @@ const ProductsPanel = () => {
     }
 
     return(
-        <div className="flex flex-col relative">
+        <div className="container flex flex-col mx-auto relative">
             <header className="flex items-center justify-between w-[1140px] h-[68px] mt-[28px] mx-auto px-5 bg-[#ffffff] border-[1px] border-[#e4e4e4] rounded-[16px]">
                 <div className="flex mx-2">
                     <CiSearch className="w-[24px] h-[24px]"/>
@@ -92,7 +92,7 @@ const ProductsPanel = () => {
                     ))
                 }
             </ul>
-            <div className="flex items-center w-[150px] mx-auto my-8 gap-2">
+            <div className="container flex items-center w-[150px] mx-auto my-8 gap-2">
                 <button onClick={() => setPage(1)} className="w-[30px] h-[30px] mx-auto text-center text-[#fff] bg-[#55a3f0] rounded-full">1</button>
                 <button onClick={() => setPage(2)} className="w-[30px] h-[30px] mx-auto text-center text-[#55a3f0] border-2 border-solid border-[#55a3f0] rounded-full">2</button>
                 <button onClick={() => setPage(3)} className="w-[30px] h-[30px] mx-auto text-center text-[#55a3f0] border-2 border-solid border-[#55a3f0] rounded-full">3</button>
