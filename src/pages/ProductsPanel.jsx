@@ -1,12 +1,17 @@
 import { useState } from "react";
+//Hooks
 import { useAllProducts } from "../services/queries.js";
-
+import { useSearchProduct } from "../services/mutation.js";
+//Components
 import AddProductsForm from "../components/AddProductsForm.jsx";
 import ProductsCard from "../components/ProductsCard.jsx";
-import {CiSearch} from "react-icons/ci";
+//Images
 import profile from "../images/profile.jpg";
 import setting from "../images/setting-3.png";
-import {useSearchProduct} from "../services/mutation.js";
+//Icon
+import { CiSearch } from "react-icons/ci";
+import Loader from "../components/Loader.jsx";
+
 
 const ProductsPanel = () => {
     const [page, setPage] = useState(1);
@@ -16,7 +21,11 @@ const ProductsPanel = () => {
 
     const { mutate } = useSearchProduct();
 
-    if (isPending) return <p>Loading...</p>;
+    if (isPending) return (
+        <div className="mt-[20%] mr-[50%]">
+            <Loader/>
+        </div>
+    );
 
     if (error) {
         console.log(error)
