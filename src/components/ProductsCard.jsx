@@ -28,7 +28,9 @@ const ProductsCard = ({ product }) => {
             <div className="w-[800px] flex items-center justify-between">
                 <p className="ml-20 text-[13px] font-normal text-[#282828]">{product?.name}</p>
                 <p className="ml-20 text-[13px] font-normal text-[#282828]">{product?.quantity}</p>
-                <p className="w-[150px text-[13px] font-normal text-[#282828]">{product?.price}<span className="mx-2 text-[10px] font-normal text-[#282828]">هزار تومان</span></p>
+                <p className="w-[150px text-[13px] font-normal text-[#282828]">{product?.price}
+                    <span className="mx-2 text-[10px] font-normal text-[#282828]">هزار تومان</span>
+                </p>
                 <p className="w-[150px] text-[13px] font-normal text-[#282828]">{product?.id}</p>
             </div>
             <div className="flex items-center w-[60px] mr-20">
@@ -39,8 +41,9 @@ const ProductsCard = ({ product }) => {
                     <GoTrash className="mx-5 size-[20px] text-[#f43f5e]"/>
                 </button>
             </div>
-            {!!deleteModal && <DeleteModals setDeleteModal={setDeleteModal} productId={deleteProductId}/>}
-            {!!editModal && <EditModals setEditModal={setEditModal} product={product}/>}
+                {!!deleteModal&& <DeleteModals setDeleteModal={setDeleteModal} productId={deleteProductId}/>}
+                {!!editModal && <EditModals setEditModal={setEditModal} product={product}/>}
+
         </div>
     )
 }

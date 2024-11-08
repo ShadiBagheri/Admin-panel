@@ -41,7 +41,7 @@ const ProductsPanel = () => {
         setSearch(search);
 
         if (value){
-            mutate({
+            mutate(data,{
                 onSuccess: (data) => {
                     console.log(data)
                 },

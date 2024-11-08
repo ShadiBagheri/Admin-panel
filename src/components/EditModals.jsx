@@ -55,8 +55,8 @@ const EditModals = ({ setEditModal, product }) => {
     };
 
     return (
-        <div className="items-center w-[100%] h-[100%] mt-[410px] mr-[-255px] backdrop-blur-sm bg-black/30 z-10 absolute">
-            <div className="flex flex-col items-center w-[460px] h-[448px] mt-[130px] mx-auto py-5 px-10 bg-[#ffff] rounded-[30px]">
+        <div className="items-center w-[100%] h-[100%] mt-[0] mr-[-255px] backdrop-blur-sm bg-black/30 z-10 absolute">
+            <div className="flex flex-col items-center w-[460px] h-[448px] my-[380px] mx-auto py-5 px-10 bg-[#ffff] rounded-[30px]">
                 <h1 className="mt-4 text-[20px] font-medium text-[#282828]">ویرایش اطلاعات</h1>
                 <form onSubmit={addNewDataHandler} className="flex flex-col items-end my-5 gap-3">
                     <div className="flex flex-col">
