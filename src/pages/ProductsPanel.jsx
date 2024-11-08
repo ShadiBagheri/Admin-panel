@@ -22,14 +22,14 @@ const ProductsPanel = () => {
     const { mutate } = useSearchProduct();
 
     if (isPending) return (
-        <div className="mt-[20%] mr-[50%]">
+        <div className="mt-[20%] mr-[48%]">
             <Loader/>
         </div>
     );
 
     if (error) {
         console.log(error)
-        return <p>Somethings went wrong</p>
+        return <p className="text-2xl font-bold text-[#55a3f0] mt-[23%] mr-[42%]">Somethings went wrong</p>
     }
 
     const addModalHandler = () => {

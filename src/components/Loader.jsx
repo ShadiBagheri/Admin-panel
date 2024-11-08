@@ -3,7 +3,7 @@ import { TailSpin } from "react-loader-spinner";
 const Loader = () => {
     return(
         <>
-            <TailSpin color="blue" radius={"0"}/>
+            <TailSpin color="#55a3f0" radius={"0"}/>
         </>
     )
 }
