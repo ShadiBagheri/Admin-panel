@@ -50,16 +50,5 @@ const useEditProduct = () => {
   return useMutation({ mutationFn, onSuccess });
 };
 
-const useSearchProduct = () => {
-  const queryClient = useQueryClient();
 
-  const mutationFn = (data) => api.get("products", data);
-
-  const onSuccess = async () => {
-    await queryClient.invalidateQueries({ queryKey: ["all-products"] });
-  }
-
-  return useMutation({ mutationFn, onSuccess })
-}
-
-export { useRegister, useLogin, useCreateProducts, useDeleteProduct, useEditProduct, useSearchProduct };
+export { useRegister, useLogin, useCreateProducts, useDeleteProduct, useEditProduct };

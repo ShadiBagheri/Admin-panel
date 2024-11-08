@@ -1,7 +1,6 @@
 import { useState } from "react";
 //Hooks
 import { useAllProducts } from "../services/queries.js";
-import { useSearchProduct } from "../services/mutation.js";
 //Components
 import AddProductsForm from "../components/AddProductsForm.jsx";
 import ProductsCard from "../components/ProductsCard.jsx";
@@ -17,9 +16,12 @@ const ProductsPanel = () => {
     const [page, setPage] = useState(1);
     const [showModal, setShowModal] = useState(false);
     const [search, setSearch] = useState("");
-    const { data, error, isPending } = useAllProducts(page);
+    const { data, error, isPending } = useAllProducts(page, search);
 
-    const { mutate } = useSearchProduct();
+    const searchHandler = (event) => {
+        const value = event.target.value;
+        setSearch(value);
+    }
 
     if (isPending) return (
         <div className="mt-[20%] mr-[48%]">
@@ -29,28 +31,17 @@ const ProductsPanel = () => {
 
     if (error) {
         console.log(error)
-        return <p className="text-2xl font-bold text-[#55a3f0] mt-[23%] mr-[42%]">Somethings went wrong</p>
+        return(
+            <p className="text-2xl font-bold text-[#55a3f0] mt-[23%] mr-[42%]">
+                Somethings went wrong
+            </p>
+        )
     }
 
     const addModalHandler = () => {
         setShowModal(true);
     }
 
-    const searchHandler = (event) => {
-        const value = event.target.value;
-        setSearch(search);
-
-        if (value){
-            mutate(data,{
-                onSuccess: (data) => {
-                    console.log(data)
-                },
-                onError: (error) => {
-                    console.log(error)
-                }
-            })
-        }
-    }
 
     return(
         <div className="container flex flex-col mx-auto relative">
@@ -96,15 +87,22 @@ const ProductsPanel = () => {
             </div>
             <ul className="w-[1140px] h-[737px] mx-auto mt-[-687px] bg-[#ffff] rounded-b-[30px]">
                 {data?.data?.filter(product => (
-                    product.name.includes(search))).map(product => (
+                    product.name.toLowerCase().includes(search.toLowerCase())))
+                    .map(product => (
                         <ProductsCard key={product.id} product={product}/>
                     ))
                 }
             </ul>
             <div className="container flex items-center w-[150px] mx-auto my-8 gap-2">
-                <button onClick={() => setPage(1)} className="w-[30px] h-[30px] mx-auto text-center text-[#fff] bg-[#55a3f0] rounded-full">1</button>
-                <button onClick={() => setPage(2)} className="w-[30px] h-[30px] mx-auto text-center text-[#55a3f0] border-2 border-solid border-[#55a3f0] rounded-full">2</button>
-                <button onClick={() => setPage(3)} className="w-[30px] h-[30px] mx-auto text-center text-[#55a3f0] border-2 border-solid border-[#55a3f0] rounded-full">3</button>
+                <button onClick={() => setPage(1)}
+                        className="w-[30px] h-[30px] mx-auto text-center text-[#fff] bg-[#55a3f0] rounded-full"> 1
+                </button>
+                <button onClick={() => setPage(2)}
+                        className="w-[30px] h-[30px] mx-auto text-center text-[#55a3f0] border-2 border-solid border-[#55a3f0] rounded-full"> 2
+                </button>
+                <button onClick={() => setPage(3)}
+                        className="w-[30px] h-[30px] mx-auto text-center text-[#55a3f0] border-2 border-solid border-[#55a3f0] rounded-full"> 3
+                </button>
             </div>
             {!!showModal && <AddProductsForm setShowModal={setShowModal}/>}
         </div>

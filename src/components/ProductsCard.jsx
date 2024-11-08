@@ -43,7 +43,6 @@ const ProductsCard = ({ product }) => {
             </div>
                 {!!deleteModal&& <DeleteModals setDeleteModal={setDeleteModal} productId={deleteProductId}/>}
                 {!!editModal && <EditModals setEditModal={setEditModal} product={product}/>}
-
         </div>
     )
 }
